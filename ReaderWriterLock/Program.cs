@@ -37,7 +37,7 @@ namespace ReaderWriterLock
 		[TestCase(100)]
 		public void TestMultipleWritersAreSerialized(int writersCount)
 		{
-			var threads = Enumerable.Range(0, writersCount).Select(_ => new Thread(() => Read(100))).ToArray();
+			var threads = Enumerable.Range(0, writersCount).Select(_ => new Thread(() => Write(100))).ToArray();
 			threads.ForEach(thread => thread.Start());
 			threads.ForEach(thread => thread.Join());
 		}
